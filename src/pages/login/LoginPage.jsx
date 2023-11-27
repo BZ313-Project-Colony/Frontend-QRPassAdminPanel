@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Label, Spinner } from 'reactstrap';
 import "./LoginPage.css";
-import adminIcon from "../../assets/images/admin.png"
+import adminIcon from "../../assets/images/QRsiyah.svg"
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../components/ErrorModal';
@@ -40,7 +40,7 @@ const LoginPage = () => {
   return (
     <div className='root'>
       <img src={adminIcon} width="200px" />
-      <h3 className='title'>QR Pass Giriş</h3>
+      <h3 className='title'>Giriş Yap</h3>
       <InputGroup className='inputUsername'>
         <InputGroupText>@</InputGroupText>
         <Input value={username} onChange={(event) => { setUsername(event.target.value) }} placeholder="Kullanıcı Adı" />
