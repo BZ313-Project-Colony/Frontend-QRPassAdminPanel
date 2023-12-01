@@ -46,7 +46,7 @@ const LoginPage = () => {
         <Input value={username} onChange={(event) => { setUsername(event.target.value) }} placeholder="Kullanıcı Adı" />
       </InputGroup>
       <InputGroup className='inputPassword'>
-        <Input value={password} onChange={(event) => { setPassword(event.target.value) }} placeholder="Şifre" />
+        <Input type="password" value={password} onChange={(event) => { setPassword(event.target.value) }} placeholder="Şifre" />
       </InputGroup>
       <ErrorModal isOpen={error != null} toggle={() => {
         setError(null)
