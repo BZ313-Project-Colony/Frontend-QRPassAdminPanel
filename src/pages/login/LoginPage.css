@@ -1,0 +1,31 @@
+.root {
+    max-width: 600px;
+    height: 75vh;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inputUsername {
+    margin-top: 16px;
+}
+
+.inputPassword {
+    margin-top: 16px;
+}
+
+.errorAlert {
+    margin-top: 32px;
+}
+
+.buttonLogin {
+    width: 100px;
+    margin-top: 16px;
+}
+
+.title {
+    margin-top: 16px;
+}
