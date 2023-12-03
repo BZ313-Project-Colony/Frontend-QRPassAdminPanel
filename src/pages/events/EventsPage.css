@@ -5,4 +5,5 @@
 .container_title {
     display: flex;
     align-items: center;
+    margin-bottom: 8px;
 }

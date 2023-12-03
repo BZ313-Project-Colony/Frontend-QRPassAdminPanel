@@ -8,7 +8,7 @@ import ErrorModal from '../../components/ErrorModal';
 import ApiRequest, { PostApiRequest } from '../../util/ApiRequest';
 
 const LoginPage = () => {
-  const { authToken, login, logout } = useAuth();
+  const { login, logout } = useAuth();
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
   const [error, setError] = useState()
