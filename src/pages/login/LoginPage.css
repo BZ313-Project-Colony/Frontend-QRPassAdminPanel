@@ -1,12 +1,9 @@
-.root {
-    max-width: 600px;
-    height: 75vh;
-    margin-right: auto;
-    margin-left: auto;
+.root_login {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    margin-top: 64px;
 }
 
 .inputUsername {
