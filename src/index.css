@@ -1,0 +1,11 @@
+.root {
+    max-width: 800px;
+    height: 100%;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin-right: auto;
+    margin-left: auto;
+}
+ * {
+    font-family: 'Exo 2', sans-serif;
+ }

@@ -5,10 +5,10 @@ import adminIcon from "../../assets/images/QRsiyah.svg"
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import ErrorModal from '../../components/ErrorModal';
-import apiRequest from '../../util/ApiRequest';
+import ApiRequest, { PostApiRequest } from '../../util/ApiRequest';
 
 const LoginPage = () => {
-  const { authToken, login, logout } = useAuth();
+  const { login, logout } = useAuth();
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
   const [error, setError] = useState()
@@ -25,7 +25,7 @@ const LoginPage = () => {
       return;
     }
     setLoading(true)
-    apiRequest("/auth/login", "POST", {
+    ApiRequest("post", "/auth/login", {
       username: username,
       password: parseInt(password),
     }, (data) => {
@@ -39,19 +39,21 @@ const LoginPage = () => {
 
   return (
     <div className='root'>
-      <img src={adminIcon} width="200px" />
-      <h3 className='title'>Giriş Yap</h3>
-      <InputGroup className='inputUsername'>
-        <InputGroupText>@</InputGroupText>
-        <Input value={username} onChange={(event) => { setUsername(event.target.value) }} placeholder="Kullanıcı Adı" />
-      </InputGroup>
-      <InputGroup className='inputPassword'>
-        <Input type="password" value={password} onChange={(event) => { setPassword(event.target.value) }} placeholder="Şifre" />
-      </InputGroup>
-      <ErrorModal isOpen={error != null} toggle={() => {
-        setError(null)
-      }} errorMessage={error} />
-      { loading ? <Spinner className='buttonLogin' /> : <Button onClick={onClickLogin} className='buttonLogin' color="secondary">Giriş</Button> }
+      <div className='root_login'>
+        <img src={adminIcon} width="200px" />
+        <h3 className='title'>Giriş Yap</h3>
+        <InputGroup className='inputUsername'>
+          <InputGroupText>@</InputGroupText>
+          <Input value={username} onChange={(event) => { setUsername(event.target.value) }} placeholder="Kullanıcı Adı" />
+        </InputGroup>
+        <InputGroup className='inputPassword'>
+          <Input type="password" value={password} onChange={(event) => { setPassword(event.target.value) }} placeholder="Şifre" />
+        </InputGroup>
+        <ErrorModal isOpen={error != null} toggle={() => {
+          setError(null)
+        }} errorMessage={error} />
+        {loading ? <Spinner className='buttonLogin' /> : <Button onClick={onClickLogin} className='buttonLogin' color="secondary">Giriş</Button>}
+      </div>
     </div>
   );
 };

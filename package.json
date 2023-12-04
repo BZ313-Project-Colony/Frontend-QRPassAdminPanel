@@ -11,10 +11,13 @@
     "http-status": "^1.7.3",
     "http-status-codes": "^2.3.0",
     "react": "^18.2.0",
+    "react-datepicker": "^4.24.0",
+    "react-datetime-picker": "^5.5.3",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.19.0",
     "react-scripts": "5.0.1",
     "reactstrap": "^9.2.1",
+    "reactstrap-date-picker": "^1.0.11",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

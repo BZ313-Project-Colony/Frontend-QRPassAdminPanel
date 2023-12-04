@@ -1,7 +1,8 @@
 import axios from "axios";
 import httpStatus from "http-status";
+import { useAuth } from "../context/AuthContext";
 
-async function apiRequest(path, method, data, onSuccess, onFailure) {
+async function ApiRequest(method, path, data, onSuccess, onFailure) {
     let endpoint = `${process.env.REACT_APP_QR_PASS_API_URL}${path}`
     let bearerToken = localStorage.getItem('authToken')
     try {
@@ -20,8 +21,10 @@ async function apiRequest(path, method, data, onSuccess, onFailure) {
         console.error('Server responded with an error:', error.response.data);
         console.error('Status code:', error.response.status);
         console.error('Headers:', error.response.headers);
-        onFailure(httpStatus[error.response.status], error.response.status);
+        if (error.response.status == 401) {
+            onFailure(error.response.status, "Giriş kimliğinizin süresi doldu! Yeniden giriş yapmanı gerekli!");
+        } else onFailure(error.response.status, httpStatus[error.response.status]);
     }
 }
 
-export default apiRequest
+export default ApiRequest

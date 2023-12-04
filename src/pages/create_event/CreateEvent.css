@@ -1,0 +1,27 @@
+.create_event_root {
+    margin-top: 32px;
+}
+
+.container_date_picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.date_picker {
+    border: solid;
+    border-width: 0.5px;
+    border-radius: 8px;
+    border-color: rgb(84, 84, 84);
+    background-color: rgb(235, 235, 235);
+    margin-right: 0;
+    margin-left: 16px;
+    align-self: center;
+    width: 256px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.create_event_submit_button {
+    width: 100%;
+}
