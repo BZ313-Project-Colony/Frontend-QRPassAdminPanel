@@ -4,7 +4,7 @@ import "./LoginPage.css";
 import adminIcon from "../../assets/images/QRsiyah.svg"
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import ErrorModal from '../../components/ErrorModal';
+import ErrorModal from '../../components/MessageModal';
 import ApiRequest, { PostApiRequest } from '../../util/ApiRequest';
 
 const LoginPage = () => {
@@ -28,8 +28,8 @@ const LoginPage = () => {
     ApiRequest("post", "/auth/login", {
       username: username,
       password: parseInt(password),
-    }, (data) => {
-      login(data.token)
+    }, (response) => {
+      login(response.data.token)
       navigate("/")
     }, (error, code) => {
       setError(`HTTP ${code} - ${error}`)
@@ -51,7 +51,7 @@ const LoginPage = () => {
         </InputGroup>
         <ErrorModal isOpen={error != null} toggle={() => {
           setError(null)
-        }} errorMessage={error} />
+        }} message={error} />
         {loading ? <Spinner className='buttonLogin' /> : <Button onClick={onClickLogin} className='buttonLogin' color="secondary">Giriş</Button>}
       </div>
     </div>

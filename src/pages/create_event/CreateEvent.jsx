@@ -6,12 +6,11 @@ import tr from 'date-fns/locale/tr';
 import "react-datepicker/dist/react-datepicker.css";
 import ApiRequest from '../../util/ApiRequest';
 import { useNavigate } from 'react-router-dom';
-import ErrorModal from '../../components/ErrorModal';
+import MessageModal from '../../components/MessageModal';
 import { useAuth } from '../../context/AuthContext';
 
 const CreateEvent = () => {
     registerLocale('tr', tr)
-
     let navigate = useNavigate()
     const { logout } = useAuth();
 
@@ -59,10 +58,10 @@ const CreateEvent = () => {
     return (
         <div className='root'>
             <div className="create_event_root">
-                <ErrorModal isOpen={error != null} toggle={() => {
+                <MessageModal isOpen={error != null} toggle={() => {
                     if (error.code == 401) logout()
                     setError(null)
-                }} errorMessage={error && error.message} />
+                }} message={error && error.message} />
                 <h1>Etkinlik Oluştur</h1>
                 <FormGroup>
                     <Label for="title">Etkinlik Adı</Label>

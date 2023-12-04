@@ -15,8 +15,7 @@ async function ApiRequest(method, path, data, onSuccess, onFailure) {
                 'Content-Type': 'application/json'
             } : null
         });
-        onSuccess(response.data)
-        console.log(response.data);
+        onSuccess(response)
     } catch (error) {
         console.error('Server responded with an error:', error.response.data);
         console.error('Status code:', error.response.status);
