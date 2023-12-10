@@ -61,7 +61,7 @@ const EventDetailPage = () => {
     }
 
     const onClickCopyRegistirationLink = () => {
-        navigator.clipboard.writeText(event_id)
+        navigator.clipboard.writeText(`${process.env.REACT_APP_REGISTIRATION_BASE_URL}/${event_id}`)
     }
 
     const onClickDeleteEvent = () => {
