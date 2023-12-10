@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Progress, Row, Spinner, Table } from 'reactstrap';
+import { Alert, Button, Progress, Row, Spinner, Table } from 'reactstrap';
 import { useAuth } from '../../context/AuthContext';
 import "./EventsPage.css"
 import apiRequest, { GetApiRequest, PostApiRequest } from '../../util/ApiRequest';
@@ -10,7 +10,7 @@ import MessageModal from '../../components/MessageModal';
 
 const EventsPage = () => {
     const { logout } = useAuth();
-    const [events, setEvents] = useState([])
+    const [events, setEvents] = useState(null)
     const [error, setError] = useState()
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
@@ -55,7 +55,8 @@ const EventsPage = () => {
                     navigate("/create_event")
                 }}>Etkinlik Oluştur</Button>
                 <div className="container_event_list">
-                    {loading ? <Spinner /> : <Table hover borderless>
+                    { loading ? <Spinner></Spinner> : <></>}
+                    {events && <Table hover borderless>
                         <thead>
                             <tr>
                                 <th>Etkinlik</th>
@@ -72,7 +73,8 @@ const EventsPage = () => {
                                 </tr>
                             ))}
                         </tbody>
-                    </Table>}
+                    </Table> }
+                    { events && events.length == 0 ? <Alert color="secondary">Henüz kayıtlı etkinlik yok.</Alert> : <></> }
                 </div>
             </div>
         </div >
