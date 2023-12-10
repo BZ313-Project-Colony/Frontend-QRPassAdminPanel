@@ -6,7 +6,7 @@ import apiRequest, { GetApiRequest, PostApiRequest } from '../../util/ApiRequest
 import { useNavigate } from 'react-router-dom';
 import ApiRequest from '../../util/ApiRequest';
 import formatTimestamp from '../../util/DateUtils';
-import ErrorModal from '../../components/ErrorModal';
+import MessageModal from '../../components/MessageModal';
 
 const EventsPage = () => {
     const { logout } = useAuth();
@@ -17,8 +17,8 @@ const EventsPage = () => {
 
     const getEvents = () => {
         setLoading(true)
-        ApiRequest("get", "/events", null, (data) => {
-            setEvents(data)
+        ApiRequest("get", "/events", null, (response) => {
+            setEvents(response.data)
             setLoading(false)
         }, (code, message) => {
             setError({ code, message })
@@ -33,9 +33,12 @@ const EventsPage = () => {
         <div className='root'>
             <div className="event_root">
                 <div className='container_title'>
-                    <ErrorModal isOpen={error != null} toggle={() => {
+                    <MessageModal isOpen={error != null} toggle={() => {
                         setError(null)
-                    }} errorMessage={error && error.message} />
+                        if (error.code == 401) {
+                            logout()
+                        }
+                    }} message={error && error.message} />
                     <h1>Etkinlikler</h1>
                     <Button style={{
                         width: "100px",
@@ -61,7 +64,9 @@ const EventsPage = () => {
                         </thead>
                         <tbody>
                             {events.map((event, index) => (
-                                <tr key={event.id} onClick={() => this.handleClick(event)} style={{ cursor: 'pointer' }}>
+                                <tr key={event.id} onClick={() => {
+                                    navigate(`/event_detail/${event.id}`)
+                                }}style={{ cursor: 'pointer' }}>
                                     <td>{event.title}</td>
                                     <td style={{ textAlign: 'right' }}>{formatTimestamp(event.time)}</td>
                                 </tr>

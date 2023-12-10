@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 
-const ErrorModal = ({ isOpen, toggle, errorMessage }) => {
+const MessageModal = ({ title, isOpen, toggle, message }) => {
   return (
     <Modal centered isOpen={isOpen} toggle={toggle}>
-      <ModalHeader toggle={toggle}>Error</ModalHeader>
+      <ModalHeader toggle={toggle}>{title ?? 'ERROR'}</ModalHeader>
       <ModalBody>
-        <p>{errorMessage}</p>
+        <p>{message}</p>
       </ModalBody>
       <ModalFooter>
         <Button color="secondary" onClick={toggle}>
@@ -17,4 +17,4 @@ const ErrorModal = ({ isOpen, toggle, errorMessage }) => {
   );
 };
 
-export default ErrorModal;
+export default MessageModal;
